@@ -1,21 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes} from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
+import {MatButtonModule} from '@angular/material/button';//ボタン
+import {MatTabsModule} from '@angular/material/tabs';//タブ
+import { RecordComponent } from './record/record.component';
+import { RegisterComponent } from './register/register.component';
+
+const appRoutes: Routes = [
+  {path:'', component: RegisterComponent},
+  {path:'record', component: RecordComponent},
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RecordComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

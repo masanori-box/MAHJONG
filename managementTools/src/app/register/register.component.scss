@@ -1,0 +1,94 @@
+//共通
+section{
+    width: 1280px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+//ユーザーボタン
+.user-btn-area{
+    margin-top: 56px;
+    > div{
+        display: flex;
+        justify-content: center;
+        button{
+            color: white;
+            width: 80px;
+            height: 40px;
+            margin-right: 16px;
+            font-size: 15px;
+            font-weight: 500;
+            span{
+                display: inline-block;
+                transform: translateY(-1px);
+            }
+            &:first-of-type{
+                background-color: #FF4343;
+            }
+            &:nth-of-type(2){
+                background-color: #0078D7;
+            }
+            &:nth-of-type(3){
+                background-color: #FFB900;
+            }
+            &:last-of-type{
+                margin-right: 0;
+                background-color: #00CC6A;
+            }
+        }
+    }
+}
+
+//順位表テーブル
+.rank-area{
+    table{
+        margin: 40px auto 0;
+        border: 1px solid #7f8c8d;
+        border-collapse: collapse;
+        font-weight: 500;
+        font-size: 15px;
+        th,td{
+            width: 92px;
+            height: 40px;
+            color: #263238;
+        }
+        th{
+            border-right:  1px solid #7f8c8d;
+            border-bottom:  1px solid #7f8c8d;
+            &:last-of-type{
+                border-right: none;
+            }
+        }
+        td{
+            border-right:  1px solid #7f8c8d;
+            text-align: center;
+            &:last-of-type{
+                border-right: none;
+            }
+        }
+    }
+}
+
+//リセット・送信ボタン
+.data-btn-area{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    button{
+        width: 120px;
+        height: 40px;
+        font-weight: 500;
+        font-size: 15px;
+        span{
+            display: inline-block;
+            transform: translateY(-1px);
+        }
+        &:first-of-type{
+            margin-right: 32px;
+        }
+    }
+}
+
+.ban-click{
+    pointer-events: none;
+}

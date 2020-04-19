@@ -1,21 +1,12 @@
-<section class="user-btn-area">
-  <div>
-    <button mat-raised-button *ngFor="let user of users" id=user{{user.id}} class="user-btn">
-      <span class="user-name">{{user.name}}</span>
-    </button>
-  </div>
-</section>
-<section class="rank-area">
-  <table>
-    <thead>
-      <th>1位</th><th>2位</th><th>3位</th><th>4位</th>
-    </thead>
-    <tbody>
-      <td></td><td></td><td></td><td></td>
-    </tbody>
-  </table>
-</section>
-<section class="data-btn-area">
-  <button mat-raised-button id="reset" disabled><span>リセット</span></button>
-  <button mat-raised-button color="primary" id="send" disabled><span>送信</span></button>
-</section>
+<main>
+    <nav mat-tab-nav-bar mat-align-tabs="center">
+        <a mat-tab-link
+            *ngFor="let link of links; let i = index"
+            [routerLink]="link.path"
+            [active]="activeLinkIndex === i"
+            (click)="activeLinkIndex = i">
+            {{link.label}}
+        </a>
+    </nav>  
+    <router-outlet></router-outlet>
+</main>
