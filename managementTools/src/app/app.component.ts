@@ -7,7 +7,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 
-//コピペしました。http://daikiojm.hatenablog.com/entry/2017/09/10/192714
+//コピペしましたhttp://daikiojm.hatenablog.com/entry/2017/09/10/192714
 export class AppComponent {
   links: any[];
   activeLinkIndex = 0;

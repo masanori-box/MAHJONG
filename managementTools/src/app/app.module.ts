@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';//ボタン
 import {MatTabsModule} from '@angular/material/tabs';//タブ
+import {MatTableModule} from '@angular/material/table';//テーブル
 import { RecordComponent } from './record/record.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatButtonModule,
     MatTabsModule,
+    MatTableModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

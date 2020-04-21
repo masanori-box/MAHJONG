@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './record.component.html',
   styleUrls: ['./record.component.scss']
 })
+
 export class RecordComponent implements OnInit {
 
   constructor(
@@ -14,7 +15,17 @@ export class RecordComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   toRegister(): void{
     this.router.navigate(['/record'])
   }
+
+  info = ['date', 'first', 'second', 'third', 'forth'];
+  dataSource = RECORD;
 }
+
+const RECORD = [
+  {date:'4/1', first: 'ネコ', second: 'カラス', third: 'ゾウ', forth: 'トラ'},
+  {date:'4/2', first: 'ネコ', second: 'カラス', third: 'ゾウ', forth: 'トラ'},
+  {date:'4/3', first: 'ネコ', second: 'カラス', third: 'ゾウ', forth: 'トラ'}  
+];
