@@ -9,6 +9,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';//ボタン
 import {MatTabsModule} from '@angular/material/tabs';//タブ
 import {MatTableModule} from '@angular/material/table';//テーブル
+import {MatPaginatorModule} from '@angular/material/paginator';//ページネーション
+import {MatFormFieldModule} from '@angular/material/form-field';//フォームフィールド
+import {MatSortModule} from '@angular/material/sort';//ソート
+import {MatInputModule} from '@angular/material/input';
 import { RecordComponent } from './record/record.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -30,6 +34,10 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatTabsModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatSortModule,
+    MatInputModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
