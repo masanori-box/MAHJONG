@@ -1,6 +1,7 @@
 
 <mat-form-field>
-  <input matInput (keyup)="applyFilter($event)">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" (focus)="placeFocus()" (blur)="placeBlur()">
 </mat-form-field>
 
 <div class="data-table mat-elevation-z8">

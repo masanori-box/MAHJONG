@@ -13,7 +13,6 @@ import {MatTableDataSource} from '@angular/material/table';
   styles:[
     `mat-paginator >>> .ng-star-inserted {
       font-size: 12px;
-      margin-left:2px;
     }`,
     `mat-paginator >>> .mat-form-field-flex{
       padding-bottom:2px;
@@ -25,11 +24,8 @@ import {MatTableDataSource} from '@angular/material/table';
       justify-content:center;
       transform: translateX(9px);
     } `,
-    `mat-form-field >>> input + span{
-    }`,
-    `mat-form-field >>> input:focus + span > label{
-      transform: translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.001px);
-      width: 133.33333333%;
+    `mat-form-field >>> .mat-form-field-label{
+      transition:color 0s;
     }`
   ]
 })
@@ -59,6 +55,19 @@ export class RecordComponent implements OnInit {
     }
   }
 
+  placeFocus(){
+    console.log('あいうえお');
+    (<HTMLElement>document.querySelector('.mat-form-field-label')).style.color='transparent'
+  }
+
+  placeBlur(){
+    if((<HTMLInputElement>document.querySelector('.mat-input-element')).value === ''){
+      (<HTMLElement>document.querySelector('.mat-form-field-label')).style.color='rgba(0,0,0,.54)'
+    }else{
+      (<HTMLElement>document.querySelector('.mat-form-field-label')).style.color='transparent'
+    }
+  }
+
   toRegister(): void{
     this.router.navigate(['/record'])
   }
@@ -74,19 +83,19 @@ const RECORD : PeriodicElement[] = [
   {date:'20200107', first: 'ネコ', second: 'カラス', third: 'ゾウ', forth: 'トラ'},  
   {date:'20200108', first: 'ネコ', second: 'カラス', third: 'ゾウ', forth: 'トラ'},  
   {date:'20200109', first: 'ネコ', second: 'カラス', third: 'ゾウ', forth: 'トラ'},  
-  {date:'202001010', first: 'ネコ', second: 'カラス', third: 'ゾウ', forth: 'トラ'},  
-  {date:'202001011', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001012', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001013', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001014', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001015', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001016', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001017', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001018', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001019', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001020', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001021', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
-  {date:'202001022', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200110', first: 'ネコ', second: 'カラス', third: 'ゾウ', forth: 'トラ'},  
+  {date:'20200111', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200112', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200113', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200114', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200115', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200116', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200117', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200118', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200119', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200120', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200121', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
+  {date:'20200122', first: 'トラ', second: 'ゾウ', third: 'カラス', forth: 'ネコ'},  
 ];
 
 export interface PeriodicElement {
