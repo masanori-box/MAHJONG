@@ -56,7 +56,6 @@ export class RecordComponent implements OnInit {
   }
 
   placeFocus(){
-    console.log('あいうえお');
     (<HTMLElement>document.querySelector('.mat-form-field-label')).style.color='transparent'
   }
 
