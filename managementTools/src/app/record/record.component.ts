@@ -50,15 +50,19 @@ export class RecordComponent implements OnInit {
   async callApi() {
     const res = await window.fetch(this.RECORD_API);
     const resJson = await res.json();
+    let record_day; //取得するデータの受け入れ先
+    let rank_day: string[]; //一時的な保管先
     await resJson.forEach((value) => {
-      let record_day = {
+      record_day = {
         date: '',
         first: '',
         second: '',
         third: '',
         forth: '',
       };
-      let rank_day = [];
+
+      rank_day = [];
+
       //日付を設定
       record_day.date = value.event_date.substring(0, 10);
 
