@@ -1,9 +1,12 @@
-
-main{
-    font-family:'Noto Sans JP', sans-serif;
+main {
+  font-family: "Noto Sans JP", sans-serif;
 }
 
-nav{
-    padding-top: 40px;
+nav {
+  padding-top: 40px;
+  a {
     font-weight: 700;
+    font-size: 16px;
+    font-family: "Noto Sans JP", sans-serif;
+  }
 }

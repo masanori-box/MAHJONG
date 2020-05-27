@@ -12,15 +12,16 @@ section {
     display: flex;
     justify-content: center;
     button {
-      color: white;
       width: 80px;
       height: 40px;
       margin-right: 16px;
-      font-size: 15px;
-      font-weight: 500;
       span {
         display: inline-block;
         transform: translateY(-1px);
+        color: white;
+        font-family: "Noto Sans JP", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
       }
       &:first-of-type {
         background-color: #00cc6a;
@@ -78,10 +79,11 @@ section {
   button {
     width: 120px;
     height: 40px;
-    font-weight: 500;
-    font-size: 15px;
     span {
       display: inline-block;
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 500;
+      font-size: 15px;
       transform: translateY(-1px);
     }
     &:first-of-type {
