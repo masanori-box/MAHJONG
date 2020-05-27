@@ -44,7 +44,7 @@ export class RecordComponent implements OnInit {
 
   //麻雀成績
   RECORD = [];
-  RECORD_API = '//192.168.0.125:8060/result';
+  RECORD_API = 'http://192.168.0.125:8060/result';
 
   //データを取得するAPIを呼ぶ
   async callApi() {

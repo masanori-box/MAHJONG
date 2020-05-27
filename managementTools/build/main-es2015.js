@@ -643,7 +643,7 @@ class RecordComponent {
         this.router = router;
         //麻雀成績
         this.RECORD = [];
-        this.RECORD_API = '//192.168.0.125:8060/result';
+        this.RECORD_API = 'http://192.168.0.125:8060/result';
         this.info = ['date', 'first', 'second', 'third', 'forth'];
         this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_4__["MatTableDataSource"](this.RECORD);
     }
@@ -886,7 +886,7 @@ class RegisterComponent {
         sendBtn = document.getElementById('send'), //送信ボタン
         rankTable = document.querySelector('.rank-area').querySelectorAll('td'), //順位表
         date = moment().format().substring(0, 10), //日付
-        RECORD_API = '//192.168.0.125:8060/result';
+        RECORD_API = 'http://192.168.0.125:8060/result';
         //送信するデータを格納
         let registerData = {
             result_id: 0,

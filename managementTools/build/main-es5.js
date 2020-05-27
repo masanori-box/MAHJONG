@@ -967,7 +967,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.router = router; //麻雀成績
 
         this.RECORD = [];
-        this.RECORD_API = '//192.168.0.125:8060/result';
+        this.RECORD_API = 'http://192.168.0.125:8060/result';
         this.info = ['date', 'first', 'second', 'third', 'forth'];
         this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_4__["MatTableDataSource"](this.RECORD);
       } //データを取得するAPIを呼ぶ
@@ -1383,7 +1383,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               //順位表
           date = moment().format().substring(0, 10),
               //日付
-          RECORD_API = '//192.168.0.125:8060/result'; //送信するデータを格納
+          RECORD_API = 'http://192.168.0.125:8060/result'; //送信するデータを格納
 
           var registerData = {
             result_id: 0,
