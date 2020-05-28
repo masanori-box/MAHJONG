@@ -35,34 +35,25 @@ export class RegisterComponent implements OnInit {
 
     //送信する成績データの型を指定
     interface registerObject {
-      result_id: number;
+      user_id: number;
       rank_1: number;
       rank_2: number;
       rank_3: number;
       rank_4: any;
-      late: number;
+      rate: number;
       event_date: string;
-      create_date: string;
     }
 
     //送信するデータを格納
     let registerData: registerObject = {
-      result_id: 0,
+      user_id: 1,
       rank_1: 0,
       rank_2: 0,
       rank_3: 0,
       rank_4: null,
-      late: 1,
-      event_date: 'テスト',
-      create_date: moment().format(),
+      rate: 1,
+      event_date: date,
     };
-
-    //result_idの最新番号を取得
-    (async () => {
-      const res = await window.fetch(RECORD_API);
-      const resJson = await res.json();
-      registerData.result_id = resJson.length + 1;
-    })();
 
     //ユーザーボタン押下時
     for (let i = 1, len = userBtnAll.length; i <= len; i++) {
@@ -94,9 +85,11 @@ export class RegisterComponent implements OnInit {
         //ここから送信データ作成
 
         //順位
-        switch (pushCount) {
+        switch (
+          pushCount //pushCountは名前ボタンを押した回数を記録してます。
+        ) {
           case 1:
-            registerData.rank_1 = Number(this.id);
+            registerData.rank_1 = Number(this.id); //idには1,2,3,4いづれかの文字列が入ってます
             break;
           case 2:
             registerData.rank_2 = Number(this.id);
@@ -121,14 +114,13 @@ export class RegisterComponent implements OnInit {
 
       //送信データ初期化
       registerData = {
-        result_id: 0,
+        user_id: 1,
         rank_1: 0,
         rank_2: 0,
         rank_3: 0,
         rank_4: null,
-        late: 1,
-        event_date: 'テスト',
-        create_date: moment().format(),
+        rate: 1,
+        event_date: moment().format(),
       };
       for (let i = 0, len = userBtnAll.length; i < len; i++) {
         rankTable[i].textContent = ''; //順位表初期化

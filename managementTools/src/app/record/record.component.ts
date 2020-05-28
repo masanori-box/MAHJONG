@@ -42,14 +42,13 @@ import { ValueTransformer } from '@angular/compiler/src/util';
 export class RecordComponent implements OnInit {
   constructor(private router: Router) {}
 
-  //麻雀成績
-  RECORD = [];
-  RECORD_API = 'http://192.168.0.125:8060/result';
+  RECORD = []; //入れ物
+  RECORD_API = 'http://192.168.0.125:8060/result'; //url
 
   //データを取得するAPIを呼ぶ
   async callApi() {
     const res = await window.fetch(this.RECORD_API);
-    const resJson = await res.json();
+    const resJson = await res.json(); //受け取ったデータをjson形式に変換
     let record_day; //取得するデータの受け入れ先
     let rank_day: string[]; //一時的な保管先
     await resJson.forEach((value) => {
@@ -92,7 +91,7 @@ export class RecordComponent implements OnInit {
       }
       record_day.forth = rank_day[4];
 
-      this.RECORD.push(record_day);
+      this.RECORD.push(record_day); //データを順次保管する
     });
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
