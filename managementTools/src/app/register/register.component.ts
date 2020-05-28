@@ -30,8 +30,36 @@ export class RegisterComponent implements OnInit {
       resetBtn = document.getElementById('reset'), //リセットボタン
       sendBtn = document.getElementById('send'), //送信ボタン
       rankTable = document.querySelector('.rank-area').querySelectorAll('td'), //順位表
+      modal = document.querySelector('.modal-area'), //モーダル
+      errorText = document.querySelector('.error-text'), //エラー文
+      loading = document
+        .getElementById('fountainG')
+        .querySelectorAll('.fountainG'), //ローディングアイコン
       date = moment().format().substring(0, 10), //日付
-      RECORD_API = 'http://192.168.0.125:8060/result';
+      RECORD_API = 'http://192.168.0.125:8060/result'; //url
+
+    //初期化
+    const reset = () => {
+      pushCount = 0; //カウント初期化
+      //送信・リセットボタン初期化
+      resetBtn.setAttribute('disabled', 'true');
+      sendBtn.setAttribute('disabled', 'true');
+
+      //送信データ初期化
+      registerData = {
+        user_id: 1,
+        rank_1: 0,
+        rank_2: 0,
+        rank_3: 0,
+        rank_4: null,
+        rate: 1,
+        event_date: moment().format(),
+      };
+      for (let i = 0, len = userBtnAll.length; i < len; i++) {
+        rankTable[i].textContent = ''; //順位表初期化
+        userBtnAll[i].classList.remove('ban-click'); //名前ボタン初期化
+      }
+    };
 
     //送信する成績データの型を指定
     interface registerObject {
@@ -82,14 +110,10 @@ export class RegisterComponent implements OnInit {
             break; //3人入力時に送信ボタンを活性化
         }
 
-        //ここから送信データ作成
-
         //順位
-        switch (
-          pushCount //pushCountは名前ボタンを押した回数を記録してます。
-        ) {
+        switch (pushCount) {
           case 1:
-            registerData.rank_1 = Number(this.id); //idには1,2,3,4いづれかの文字列が入ってます
+            registerData.rank_1 = Number(this.id);
             break;
           case 2:
             registerData.rank_2 = Number(this.id);
@@ -107,38 +131,43 @@ export class RegisterComponent implements OnInit {
 
     //リセットボタン押下時
     resetBtn.addEventListener('click', function () {
-      pushCount = 0; //カウント初期化
-      //送信・リセットボタン初期化
-      resetBtn.setAttribute('disabled', 'true');
-      sendBtn.setAttribute('disabled', 'true');
-
-      //送信データ初期化
-      registerData = {
-        user_id: 1,
-        rank_1: 0,
-        rank_2: 0,
-        rank_3: 0,
-        rank_4: null,
-        rate: 1,
-        event_date: moment().format(),
-      };
-      for (let i = 0, len = userBtnAll.length; i < len; i++) {
-        rankTable[i].textContent = ''; //順位表初期化
-        userBtnAll[i].classList.remove('ban-click'); //名前ボタン初期化
-      }
+      reset();
     });
 
-    //送信ボタン押下時にデータを送信
+    //送信ボタン押下時
     sendBtn.addEventListener('click', function () {
-      (async () => {
-        const res = await window.fetch(RECORD_API, {
+      //ローディング表示
+      loading.forEach((element) => {
+        element.classList.add('active');
+      });
+
+      //データ送信
+      window
+        .fetch(RECORD_API, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json; charset=utf-8',
           },
           body: JSON.stringify(registerData),
+        })
+        //通信成功
+        .then((e) => {
+          reset();
+          modal.classList.add('active');
+          loading.forEach((element) => {
+            element.classList.remove('active');
+          });
+          setTimeout(() => {
+            modal.classList.remove('active');
+          }, 3000);
+        })
+        //通信失敗
+        .catch(() => {
+          errorText.classList.add('active');
+          loading.forEach((element) => {
+            element.classList.remove('active');
+          });
         });
-      })();
     });
   }
 }
