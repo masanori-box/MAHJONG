@@ -12,7 +12,8 @@ import { MatTableModule } from '@angular/material/table'; //テーブル
 import { MatPaginatorModule } from '@angular/material/paginator'; //ページネーション
 import { MatFormFieldModule } from '@angular/material/form-field'; //フォームフィールド
 import { MatSortModule } from '@angular/material/sort'; //ソート
-import { MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input'; //入力エリア
+import { MatIconModule } from '@angular/material/icon'; //アイコン
 import { RecordComponent } from './record/record.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSortModule,
     MatInputModule,
+    MatIconModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],

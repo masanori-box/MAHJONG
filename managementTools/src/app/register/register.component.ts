@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
       sendBtn = document.getElementById('send'), //送信ボタン
       rankTable = document.querySelector('.rank-area').querySelectorAll('td'), //順位表
       modal = document.querySelector('.modal-area'), //モーダル
+      close = document.querySelector('.close'), //クローズアイコン
       errorText = document.querySelector('.error-text'), //エラー文
       loading = document
         .getElementById('fountainG')
@@ -38,12 +39,17 @@ export class RegisterComponent implements OnInit {
       date = moment().format().substring(0, 10), //日付
       RECORD_API = 'http://192.168.0.125:8060/result'; //url
 
+    close.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
     //初期化
     const reset = () => {
       pushCount = 0; //カウント初期化
-      //送信・リセットボタン初期化
+      //送信・リセットボタン初期化、エラーテキスト非表示
       resetBtn.setAttribute('disabled', 'true');
       sendBtn.setAttribute('disabled', 'true');
+      errorText.classList.remove('active');
 
       //送信データ初期化
       registerData = {
@@ -125,17 +131,19 @@ export class RegisterComponent implements OnInit {
             registerData.rank_4 = Number(this.id);
             break;
         }
-        console.log(registerData);
       });
     }
 
     //リセットボタン押下時
     resetBtn.addEventListener('click', function () {
       reset();
+      console.log(registerData);
     });
 
     //送信ボタン押下時
     sendBtn.addEventListener('click', function () {
+      console.log(registerData);
+      errorText.classList.remove('active'); //エラーテキスト非表示
       //ローディング表示
       loading.forEach((element) => {
         element.classList.add('active');
@@ -151,22 +159,26 @@ export class RegisterComponent implements OnInit {
           body: JSON.stringify(registerData),
         })
         //通信成功
-        .then((e) => {
-          reset();
-          modal.classList.add('active');
-          loading.forEach((element) => {
-            element.classList.remove('active');
-          });
+        .then(() => {
           setTimeout(() => {
-            modal.classList.remove('active');
-          }, 3000);
+            reset();
+            modal.classList.add('active');
+            loading.forEach((element) => {
+              element.classList.remove('active');
+            });
+            setTimeout(() => {
+              modal.classList.remove('active');
+            }, 3500);
+          }, 500);
         })
         //通信失敗
         .catch(() => {
-          errorText.classList.add('active');
-          loading.forEach((element) => {
-            element.classList.remove('active');
-          });
+          setTimeout(() => {
+            errorText.classList.add('active');
+            loading.forEach((element) => {
+              element.classList.remove('active');
+            });
+          }, 500);
         });
     });
   }

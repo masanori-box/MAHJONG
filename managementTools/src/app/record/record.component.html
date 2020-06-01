@@ -8,29 +8,45 @@
   />
 </mat-form-field>
 
-<div class="data-table mat-elevation-z8">
+<section class="data-table mat-elevation-z8">
   <table mat-table matSort [dataSource]="dataSource">
-    <ng-container matColumnDef="date" class="date-cell">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef class="id-area"></th>
+      <td mat-cell *matCellDef="let data" class="id-area">{{ data.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="date-header">
         日付
       </th>
       <td mat-cell *matCellDef="let data">{{ data.date }}</td>
     </ng-container>
     <ng-container matColumnDef="first">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>1位</th>
+      <th mat-header-cell *matHeaderCellDef>1位</th>
       <td mat-cell *matCellDef="let data">{{ data.first }}</td>
     </ng-container>
     <ng-container matColumnDef="second">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>2位</th>
+      <th mat-header-cell *matHeaderCellDef>2位</th>
       <td mat-cell *matCellDef="let data">{{ data.second }}</td>
     </ng-container>
     <ng-container matColumnDef="third">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>3位</th>
+      <th mat-header-cell *matHeaderCellDef>3位</th>
       <td mat-cell *matCellDef="let data">{{ data.third }}</td>
     </ng-container>
     <ng-container matColumnDef="forth">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>4位</th>
+      <th mat-header-cell *matHeaderCellDef>4位</th>
       <td mat-cell *matCellDef="let data">{{ data.forth }}</td>
+    </ng-container>
+    <ng-container matColumnDef="rate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>レート</th>
+      <td mat-cell *matCellDef="let data">{{ data.rate }}</td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let data">
+        <button mat-mini-fab color="primary" class="delete-btn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="info"></tr>
     <tr mat-row *matRowDef="let row; columns: info"></tr>
@@ -39,4 +55,16 @@
     [pageSizeOptions]="[10, 30]"
     showFirstLastButtons
   ></mat-paginator>
-</div>
+</section>
+
+<section class="delete-modal">
+  <div class="modal">
+    <p>この成績を削除しますか？</p>
+    <div class="flex-btn">
+      <button mat-raised-button color="warn" class="js-yes" disabled>
+        はい
+      </button>
+      <button mat-raised-button class="js-no">いいえ</button>
+    </div>
+  </div>
+</section>
