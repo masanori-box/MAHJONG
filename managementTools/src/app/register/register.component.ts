@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 const moment = require('moment');
 
@@ -17,6 +17,22 @@ export class RegisterComponent implements OnInit {
     { id: '4', name: '朝原' },
   ];
 
+  //送信データ
+  registerData = {
+    user_id: 1,
+    rank_1: 0,
+    rank_2: 0,
+    rank_3: 0,
+    rank_4: null,
+    rate: 1,
+    event_date: moment().format().substring(0, 10),
+  };
+
+  //ラジオボタン押下時
+  rateChange = (num) => {
+    this.registerData.rate = num;
+  };
+
   ngOnInit(): void {}
 
   toRecord(): void {
@@ -25,6 +41,7 @@ export class RegisterComponent implements OnInit {
 
   ngAfterViewInit(): void {
     let pushCount = 0; //ユーザーボタン押下の合計回数をカウント
+    const _this = this;
 
     const userBtnAll = document.querySelectorAll('.user-btn'), //ユーザーボタン(全て)
       resetBtn = document.getElementById('reset'), //リセットボタン
@@ -36,7 +53,6 @@ export class RegisterComponent implements OnInit {
       loading = document
         .getElementById('fountainG')
         .querySelectorAll('.fountainG'), //ローディングアイコン
-      date = moment().format().substring(0, 10), //日付
       RECORD_API = 'http://192.168.0.125:8060/result'; //url
 
     close.addEventListener('click', () => {
@@ -51,42 +67,23 @@ export class RegisterComponent implements OnInit {
       sendBtn.setAttribute('disabled', 'true');
       errorText.classList.remove('active');
 
+      //ラジオボタン
+      document.getElementById('mat-radio-2-input').click();
+
       //送信データ初期化
-      registerData = {
+      this.registerData = {
         user_id: 1,
         rank_1: 0,
         rank_2: 0,
         rank_3: 0,
         rank_4: null,
         rate: 1,
-        event_date: moment().format(),
+        event_date: moment().format().substring(0, 10),
       };
       for (let i = 0, len = userBtnAll.length; i < len; i++) {
         rankTable[i].textContent = ''; //順位表初期化
         userBtnAll[i].classList.remove('ban-click'); //名前ボタン初期化
       }
-    };
-
-    //送信する成績データの型を指定
-    interface registerObject {
-      user_id: number;
-      rank_1: number;
-      rank_2: number;
-      rank_3: number;
-      rank_4: any;
-      rate: number;
-      event_date: string;
-    }
-
-    //送信するデータを格納
-    let registerData: registerObject = {
-      user_id: 1,
-      rank_1: 0,
-      rank_2: 0,
-      rank_3: 0,
-      rank_4: null,
-      rate: 1,
-      event_date: date,
     };
 
     //ユーザーボタン押下時
@@ -119,16 +116,16 @@ export class RegisterComponent implements OnInit {
         //順位
         switch (pushCount) {
           case 1:
-            registerData.rank_1 = Number(this.id);
+            _this.registerData.rank_1 = Number(this.id);
             break;
           case 2:
-            registerData.rank_2 = Number(this.id);
+            _this.registerData.rank_2 = Number(this.id);
             break;
           case 3:
-            registerData.rank_3 = Number(this.id);
+            _this.registerData.rank_3 = Number(this.id);
             break;
           case 4:
-            registerData.rank_4 = Number(this.id);
+            _this.registerData.rank_4 = Number(this.id);
             break;
         }
       });
@@ -137,13 +134,15 @@ export class RegisterComponent implements OnInit {
     //リセットボタン押下時
     resetBtn.addEventListener('click', function () {
       reset();
-      console.log(registerData);
     });
 
     //送信ボタン押下時
     sendBtn.addEventListener('click', function () {
-      console.log(registerData);
+      //ボタン非活性
+      resetBtn.setAttribute('disabled', 'true');
+      sendBtn.setAttribute('disabled', 'true');
       errorText.classList.remove('active'); //エラーテキスト非表示
+      console.log(_this.registerData);
       //ローディング表示
       loading.forEach((element) => {
         element.classList.add('active');
@@ -156,7 +155,7 @@ export class RegisterComponent implements OnInit {
           headers: {
             'Content-Type': 'application/json; charset=utf-8',
           },
-          body: JSON.stringify(registerData),
+          body: JSON.stringify(_this.registerData),
         })
         //通信成功
         .then(() => {
@@ -174,7 +173,10 @@ export class RegisterComponent implements OnInit {
         //通信失敗
         .catch(() => {
           setTimeout(() => {
+            resetBtn.removeAttribute('disabled');
+            sendBtn.removeAttribute('disabled');
             errorText.classList.add('active');
+
             loading.forEach((element) => {
               element.classList.remove('active');
             });

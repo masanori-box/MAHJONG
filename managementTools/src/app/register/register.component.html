@@ -30,6 +30,22 @@
     </tbody>
   </table>
 </section>
+<section class="rate-area">
+  <mat-radio-group>
+    <mat-radio-button value="1" checked (change)="rateChange(1)"
+      >100円</mat-radio-button
+    >
+    <mat-radio-button value="2" (change)="rateChange(2)"
+      >200円</mat-radio-button
+    >
+    <mat-radio-button value="3" (change)="rateChange(3)"
+      >300円</mat-radio-button
+    >
+    <mat-radio-button value="4" (change)="rateChange(4)"
+      >400円</mat-radio-button
+    >
+  </mat-radio-group>
+</section>
 <section class="data-btn-area">
   <button mat-raised-button id="reset" disabled><span>リセット</span></button>
   <button mat-raised-button color="primary" id="send" disabled>

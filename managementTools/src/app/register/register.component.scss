@@ -71,9 +71,21 @@ section {
   }
 }
 
+.rate-area {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  .mat-radio-button {
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+}
+
 //リセット・送信ボタン
 .data-btn-area {
-  margin-top: 40px;
+  margin-top: 32px;
   display: flex;
   justify-content: center;
   button {
@@ -102,7 +114,7 @@ section {
   position: relative;
   width: 145px;
   height: 20px;
-  margin: 20px auto 0;
+  margin: 16px auto 0;
 }
 
 .fountainG {
@@ -165,7 +177,7 @@ section {
 .error-area {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 16px;
   p {
     font-size: 16px;
     font-weight: 500;

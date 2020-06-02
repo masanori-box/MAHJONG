@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'; //フォー�
 import { MatSortModule } from '@angular/material/sort'; //ソート
 import { MatInputModule } from '@angular/material/input'; //入力エリア
 import { MatIconModule } from '@angular/material/icon'; //アイコン
+import { MatRadioModule } from '@angular/material/radio'; //ラジオボタン
 import { RecordComponent } from './record/record.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     MatSortModule,
     MatInputModule,
     MatIconModule,
+    MatRadioModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],
