@@ -67,9 +67,6 @@ export class RegisterComponent implements OnInit {
       sendBtn.setAttribute('disabled', 'true');
       errorText.classList.remove('active');
 
-      //ラジオボタン
-      document.getElementById('mat-radio-2-input').click();
-
       //送信データ初期化
       this.registerData = {
         user_id: 1,
