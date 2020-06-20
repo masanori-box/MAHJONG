@@ -17,14 +17,21 @@ import { MatIconModule } from '@angular/material/icon'; //アイコン
 import { MatRadioModule } from '@angular/material/radio'; //ラジオボタン
 import { RecordComponent } from './record/record.component';
 import { RegisterComponent } from './register/register.component';
+import { AggregateComponent } from './aggregate/aggregate.component';
 
 const appRoutes: Routes = [
   { path: '', component: RegisterComponent },
   { path: 'record', component: RecordComponent },
+  { path: 'aggregate', component: AggregateComponent },
 ];
 
 @NgModule({
-  declarations: [AppComponent, RecordComponent, RegisterComponent],
+  declarations: [
+    AppComponent,
+    RecordComponent,
+    RegisterComponent,
+    AggregateComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

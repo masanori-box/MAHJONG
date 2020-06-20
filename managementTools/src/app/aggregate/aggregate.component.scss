@@ -1,0 +1,94 @@
+main {
+  margin-top: 56px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table th:first-child {
+  border-radius: 5px 0 0 0;
+}
+table th:last-child {
+  border-radius: 0 5px 0 0;
+}
+
+table th {
+  text-align: center;
+  padding: 10px 0;
+  color: rgba(0, 0, 0, 0.87);
+  letter-spacing: 1px;
+}
+
+table td {
+  text-align: center;
+  border-top: none;
+  padding: 10px 0;
+}
+
+table tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
+}
+
+table tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+.total {
+  > p {
+    color: rgba(0, 0, 0, 0.87);
+    text-align: center;
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+}
+
+.mahjong3 {
+  width: 800px;
+  margin: 0 auto 56px;
+  th,
+  td {
+    width: calc(100% / 8);
+  }
+  th {
+    background-color: #ddd;
+    border: 1px solid #a8b7c5;
+    border-right: none;
+    &:last-child {
+      border-right: 1px solid #a8b7c5;
+    }
+  }
+  td {
+    border-left: 1px solid #a8b7c5;
+    border-bottom: 1px solid #a8b7c5;
+    &:last-child {
+      border-right: 1px solid #a8b7c5;
+    }
+  }
+}
+.mahjong4 {
+  width: 800px;
+  margin: 0 auto 30px;
+  th,
+  td {
+    width: calc(100% / 8);
+  }
+  th {
+    background-color: #ddd;
+    border: 1px solid #a8b7c5;
+    border-right: none;
+    &:last-child {
+      border-right: 1px solid #a8b7c5;
+    }
+  }
+  td {
+    border-left: 1px solid #a8b7c5;
+    border-bottom: 1px solid #a8b7c5;
+    &:last-child {
+      border-right: 1px solid #a8b7c5;
+    }
+  }
+}
