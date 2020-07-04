@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatInput } from '@angular/material/input';
@@ -41,7 +40,7 @@ import { ValueTransformer } from '@angular/compiler/src/util';
   ],
 })
 export class RecordComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() {}
 
   RECORD = []; //入れ物
   RECORD_API = 'http://192.168.0.125:8060/result'; //url
@@ -198,11 +197,6 @@ export class RecordComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  //遷移先設定
-  toRegister(): void {
-    this.router.navigate(['/record']);
   }
 
   //テーブルのレイアウト崩れを修正

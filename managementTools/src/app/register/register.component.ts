@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 const moment = require('moment');
 
 @Component({
@@ -8,7 +7,7 @@ const moment = require('moment');
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() {}
   //ユーザー情報
   users = [
     { id: '1', name: '田中' },
@@ -34,10 +33,6 @@ export class RegisterComponent implements OnInit {
   };
 
   ngOnInit(): void {}
-
-  toRecord(): void {
-    this.router.navigate(['/record']);
-  }
 
   ngAfterViewInit(): void {
     let pushCount = 0; //ユーザーボタン押下の合計回数をカウント
